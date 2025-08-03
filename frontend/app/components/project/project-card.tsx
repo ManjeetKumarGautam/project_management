@@ -10,7 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 import { getTaskStatusColor } from "@/lib";
 import { Progress } from "../ui/progress";
-import { format } from "date-fns";
+import moment from 'moment'
 import { CalendarDays } from "lucide-react";
 
 interface ProjectCardProps {
@@ -63,7 +63,7 @@ export const ProjectCard = ({
               {project.dueDate && (
                 <div className="flex items-center text-xs text-muted-foreground">
                   <CalendarDays className="w-4 h-4" />
-                  <span>{format(project.dueDate, "MMM d, yyyy")}</span>
+                  <span>{moment(project.dueDate).format("MMM D, YYYY")}</span>
                 </div>
               )}
             </div>

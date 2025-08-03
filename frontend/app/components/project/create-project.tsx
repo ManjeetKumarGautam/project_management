@@ -31,7 +31,7 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 
-import { format } from "date-fns";
+import moment from "moment";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
 import { Checkbox } from "../ui/checkbox";
@@ -177,7 +177,7 @@ export const CreateProjectDialog = ({
                           >
                             <CalendarIcon className="size-4 mr-2" />
                             {field.value ? (
-                              format(new Date(field.value), "PPPP")
+                              moment(field.value).format("dddd, MMMM D, YYYY")
                             ) : (
                               <span>Pick a date</span>
                             )}
@@ -219,7 +219,7 @@ export const CreateProjectDialog = ({
                           >
                             <CalendarIcon className="size-4 mr-2" />
                             {field.value ? (
-                              format(new Date(field.value), "PPPP")
+                              moment(field.value).format("dddd, MMMM D, YYYY")
                             ) : (
                               <span>Pick a date</span>
                             )}

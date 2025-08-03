@@ -20,7 +20,7 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGetMyTasksQuery } from "@/hooks/use-task";
 import type { Task } from "@/types";
-import { format } from "date-fns";
+import moment from "moment";
 import { ArrowUpRight, CheckCircle, Clock, FilterIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router";
@@ -237,7 +237,7 @@ const MyTasks = () => {
 
                       <div className="text-sm text-muted-foreground space-y-1">
                         {task.dueDate && (
-                          <div>Due: {format(task.dueDate, "PPPP")}</div>
+                          <div>Due: {moment(task.dueDate).format("dddd, MMMM D, YYYY")}</div>
                         )}
 
                         <div>
@@ -247,7 +247,7 @@ const MyTasks = () => {
                           </span>
                         </div>
 
-                        <div>Modified on: {format(task.updatedAt, "PPPP")}</div>
+                        <div>Modified on: {moment(task.updatedAt).format("dddd, MMMM D, YYYY")}</div>
                       </div>
                     </div>
                   </div>
@@ -302,7 +302,7 @@ const MyTasks = () => {
 
                         {task.dueDate && (
                           <span className="text-sm text-muted-foreground">
-                            {format(task.dueDate, "PPPP")}
+                            {moment(task.dueDate).format("dddd, MMMM D, YYYY")}
                           </span>
                         )}
                       </div>
@@ -354,7 +354,7 @@ const MyTasks = () => {
 
                         {task.dueDate && (
                           <span className="text-sm text-muted-foreground">
-                            {format(task.dueDate, "PPPP")}
+                            {moment(task.dueDate).format("dddd, MMMM D, YYYY")}
                           </span>
                         )}
                       </div>
@@ -406,7 +406,7 @@ const MyTasks = () => {
 
                         {task.dueDate && (
                           <span className="text-sm text-muted-foreground">
-                            {format(task.dueDate, "PPPP")}
+                            {moment(task.dueDate).format("dddd, MMMM D, YYYY")}
                           </span>
                         )}
                       </div>

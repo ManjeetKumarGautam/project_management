@@ -14,9 +14,9 @@ import { WorkspaceAvatar } from "@/components/workspace/workspace-avatar";
 import { useGetWorkspacesQuery } from "@/hooks/use-workspace";
 import type { Workspace } from "@/types";
 import { PlusCircle, Users } from "lucide-react";
-import { useEffect, useState } from "react";
-import { Link, useLoaderData, useNavigate } from "react-router";
-import { format } from "date-fns";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import moment from "moment";
 
 const Workspaces = () => {
   const [isCreatingWorkspace, setIsCreatingWorkspace] = useState(false);
@@ -88,7 +88,7 @@ const WorkspaceCard = ({ workspace }: { workspace: Workspace }) => {
               <div>
                 <CardTitle className="">{workspace.name}</CardTitle>
                 <span className="text-xs text-muted-foreground">
-                  Created at {format(workspace.createdAt, "MMM d, yyyy h:mm a")}
+                  Created at {moment(workspace.createdAt).format("MMM D, YYYY h:mm A")}
                 </span>
               </div>
             </div>

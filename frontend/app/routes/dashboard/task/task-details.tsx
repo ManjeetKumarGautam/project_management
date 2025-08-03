@@ -22,7 +22,7 @@ import {
 } from "@/hooks/use-task";
 import { useAuth } from "@/provider/auth-context";
 import type { Project, Task } from "@/types";
-import { format, formatDistanceToNow } from "date-fns";
+import moment from "moment";
 import { Eye, EyeOff, Paperclip } from "lucide-react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
@@ -186,9 +186,7 @@ const TaskDetails = () => {
               <TaskTitle title={task.title} taskId={task._id} />
               <div className="text-xs text-muted-foreground">
                 Created at:{" "}
-                {formatDistanceToNow(new Date(task.createdAt), {
-                  addSuffix: true,
-                })}
+                {moment(task.createdAt).fromNow()}
               </div>
             </div>
 

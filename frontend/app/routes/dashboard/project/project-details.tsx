@@ -13,7 +13,7 @@ import { useUpdateTaskStatusMutation } from "@/hooks/use-task";
 import { getProjectProgress } from "@/lib";
 import { cn } from "@/lib/utils";
 import type { Project, Task, TaskStatus } from "@/types";
-import { format } from "date-fns";
+import moment from "moment";
 import { AlertCircle, Calendar, CheckCircle, Clock, Settings } from "lucide-react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
@@ -463,7 +463,7 @@ const TaskCard = ({ task, onClick, projectId }: { task: Task; onClick: () => voi
           {task.dueDate && (
             <div className="text-xs text-muted-foreground flex items-center">
               <Calendar className="size-3 mr-1" />
-              {format(new Date(task.dueDate), "MMM d, yyyy")}
+              {moment(task.dueDate).format("MMMM D, YYYY")}
             </div>
           )}
         </div>

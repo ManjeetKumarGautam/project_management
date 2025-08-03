@@ -9,7 +9,7 @@ import {
 } from "./ui/card";
 import { cn } from "@/lib/utils";
 import { CheckCircle2, Circle } from "lucide-react";
-import { format } from "date-fns";
+import moment from 'moment'
 
 export const UpcomingTasks = ({ data }: { data: Task[] }) => {
   const [searchParams] = useSearchParams();
@@ -57,7 +57,7 @@ export const UpcomingTasks = ({ data }: { data: Task[] }) => {
                     <>
                       <span className="mx-1"> - </span>
                       <span>
-                        {format(new Date(task.dueDate), "MMM d, yyyy")}
+                        {moment(task.dueDate).format("MMM D, YYYY")}
                       </span>
                     </>
                   )}

@@ -9,7 +9,7 @@ import { useCreateTaskMutation } from "@/hooks/use-task";
 import { createTaskSchema } from "@/lib/schema";
 import type { ProjectMemberRole, User } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
+import moment from "moment";
 import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -211,7 +211,7 @@ export const CreateTaskDialog = ({
                             >
                               <CalendarIcon className="size-4 mr-2" />
                               {field.value ? (
-                                format(new Date(field.value), "PPPP")
+                                moment(field.value).format("dddd, MMMM D, YYYY")
                               ) : (
                                 <span>Pick a date</span>
                               )}

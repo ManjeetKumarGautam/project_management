@@ -12,7 +12,7 @@ import {
 } from "@/hooks/use-task";
 import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { formatDistanceToNow } from "date-fns";
+import moment from "moment";
 import { Loader } from "../loader";
 
 export const CommentSection = ({
@@ -106,7 +106,7 @@ export const CommentSection = ({
                 <div className="flex justify-between items-center mb-1">
                   <span className="font-medium text-sm">{comment.author.name}</span>
                   <span className="text-xs text-muted-foreground">
-                    {formatDistanceToNow(comment.createdAt, { addSuffix: true })}
+                    {moment(comment.createdAt).fromNow()}
                   </span>
                 </div>
                 <p className="text-sm text-muted-foreground">{comment.text}</p>

@@ -34,7 +34,7 @@ import {
 import { projectSchema } from '@/lib/schema';
 import { ProjectStatus, type Project, type MemberProps } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { format } from 'date-fns';
+import moment from 'moment';
 import { CalendarIcon, Settings } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -192,7 +192,7 @@ export default function ProjectEdit() {
                                                 <PopoverTrigger asChild>
                                                     <Button variant="outline" className="w-full justify-start text-left">
                                                         <CalendarIcon className="size-4 mr-2" />
-                                                        {field.value ? format(new Date(field.value), 'PPP') : <span>Pick a date</span>}
+                                                        {field.value ? moment(field.value).format("MMM D, YYYY") : <span>Pick a date</span>}
                                                     </Button>
                                                 </PopoverTrigger>
                                                 <PopoverContent>
@@ -220,7 +220,7 @@ export default function ProjectEdit() {
                                                 <PopoverTrigger asChild>
                                                     <Button variant="outline" className="w-full justify-start text-left">
                                                         <CalendarIcon className="size-4 mr-2" />
-                                                        {field.value ? format(new Date(field.value), 'PPP') : <span>Pick a date</span>}
+                                                        {field.value ? moment(field.value).format("MMM D, YYYY") : <span>Pick a date</span>}
                                                     </Button>
                                                 </PopoverTrigger>
                                                 <PopoverContent>
