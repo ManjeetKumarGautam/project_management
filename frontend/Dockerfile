@@ -1,22 +1,30 @@
 FROM node:20-alpine AS development-dependencies-env
-COPY . /app
 WORKDIR /app
+COPY . .
 RUN npm ci
 
 FROM node:20-alpine AS production-dependencies-env
-COPY ./package.json package-lock.json /app/
 WORKDIR /app
+COPY ./package.json ./package-lock.json ./
 RUN npm ci --omit=dev
 
 FROM node:20-alpine AS build-env
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
 WORKDIR /app
+COPY . .
+COPY --from=development-dependencies-env /app/node_modules ./node_modules
+
+# ✅ Add this line to include your .env file in the build
+COPY .env .env
+
 RUN npm run build
 
 FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
 WORKDIR /app
+COPY ./package.json ./package-lock.json ./
+COPY --from=production-dependencies-env /app/node_modules ./node_modules
+COPY --from=build-env /app/build ./build
+
+# ✅ Also copy .env here if needed by the runtime
+COPY .env .env
+
 CMD ["npm", "run", "start"]
