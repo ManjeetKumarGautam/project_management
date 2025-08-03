@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import moment from 'moment';
 import type { Notification } from '@/types';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
