@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
-console.log("Using API URL", BASE_URL);
+console.log("Using API URL ================== ", BASE_URL);
 const api = axios.create({
   baseURL: BASE_URL,
   headers: {
