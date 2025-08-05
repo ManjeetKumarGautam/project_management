@@ -53,7 +53,6 @@ export const Header = ({
   useEffect(() => {
     if (!workspaces || workspaces.length === 0) return;
 
-    console.log(workspaces);
     let workspace: Workspace | null = null;
 
     try {

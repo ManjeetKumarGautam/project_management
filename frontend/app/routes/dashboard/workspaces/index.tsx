@@ -73,13 +73,13 @@ const WorkspaceCard = ({ workspace }: { workspace: Workspace }) => {
   const navigate = useNavigate();
 
   function handleOnClick(w: Workspace) {
-    // localStorage.setItem('workspace', JSON.stringify(w));
+    localStorage.setItem('workspace', JSON.stringify(w));
     navigate(`/workspaces/${w._id}`)
   }
 
   return (
     <div onClick={() => handleOnClick(workspace)}>
-      <Card className="transition-all hover:shadow-md hover:-translate-y-1">
+      <Card className="transition-all hover:shadow-md hover:-translate-y-1 cursor-pointer">
         <CardHeader className="pb-2">
           <div className="flex items-center justify-between">
             <div className="flex gap-2">

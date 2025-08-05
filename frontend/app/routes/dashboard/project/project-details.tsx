@@ -147,9 +147,9 @@ const ProjectDetails = () => {
             <div className="flex items-center space-x-2 text-sm">
               <span className="text-muted-foreground">Status:</span>
               <div className="space-x-2">
-                <Badge variant="outline" className="bg-violet-200">
+                {/* <Badge variant="outline" className="bg-violet-200">
                   {tasks.filter((task) => task.status === "Backlog").length} Backlog
-                </Badge>
+                </Badge> */}
                 <Badge variant="outline" className="bg-blue-200">
                   {tasks.filter((task) => task.status === "To Do").length} To Do
                 </Badge>
@@ -164,15 +164,15 @@ const ProjectDetails = () => {
             </div>
           </div>
           <TabsContent value="all" className="h-full">
-            <div className="grid grid-cols-4 gap-3">
-              <div className="bg-red-50 p-4 rounded-xl">
+            <div className="grid grid-cols-3 gap-3">
+              {/* <div className="bg-red-50 p-4 rounded-xl">
                 <TaskColumn
                   title="Backlog"
                   tasks={tasks.filter((task) => task.status === "To Do")}
                   onTaskClick={handleTaskClick}
                   projectId={projectId}
                 />
-              </div>
+              </div> */}
               <div className="bg-blue-50 p-4 rounded-xl">
                 <TaskColumn
                   title="To Do"
@@ -247,7 +247,9 @@ const ProjectDetails = () => {
                 <div className=" w-[80vw] overflow-hidden border rounded-lg">
                   <Timeline tasks={tasks} />
                 </div> :
-                <h2 className="text-center text-muted-foreground mt-10 text-2xl">No task yet</h2>
+                <div className="text-center text-sm text-muted-foreground">
+                  No tasks yet
+                </div>
             }
 
 

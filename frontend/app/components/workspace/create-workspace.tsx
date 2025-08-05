@@ -134,7 +134,7 @@ export const CreateWorkspace = ({
                             className={cn(
                               "w-6 h-6 rounded-full cursor-pointer hover:opacity-80 transition-all duration-300",
                               field.value === color &&
-                                "ring-2 ring-offset-2 ring-blue-500"
+                              "ring-2 ring-offset-2 ring-blue-500"
                             )}
                             style={{ backgroundColor: color }}
                           ></div>

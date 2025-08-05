@@ -55,7 +55,7 @@ const createTask = async (req, res) => {
 
 
 
-    // ✅ Send notifications to all assignees
+    // Send notifications to all assignees
     for (const userId of assignees) {
       const message = `You’ve been assigned a new task: ${title}`;
 

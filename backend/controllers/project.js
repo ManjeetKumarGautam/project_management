@@ -43,6 +43,31 @@ const createProject = async (req, res) => {
     });
 
     workspace.projects.push(newProject._id);
+
+
+
+
+    // Send notifications to all assignees
+    for (const m of members) {
+
+      if (m.user != req.user._id) {
+
+        const message = `You’ve been added to the project “${title}” by ${req.user.name}.`;
+
+        // Save to DB
+        const notification = await Notification.create({
+          user: m.user,
+          message,
+        });
+
+        // Emit via socket
+        io.to(m.user.toString()).emit("new-notification", {
+          _id: notification._id,
+          message: notification.message,
+          createdAt: notification.createdAt,
+        });
+      }
+    }
     await workspace.save();
 
     return res.status(201).json(newProject);

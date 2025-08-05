@@ -219,7 +219,7 @@ export const CreateProjectDialog = ({
                           >
                             <CalendarIcon className="size-4 mr-2" />
                             {field.value ? (
-                              moment(field.value).format("dddd, MMMM D, YYYY")
+                              moment(field.value).format("MMMM D, YYYY")
                             ) : (
                               <span>Pick a date</span>
                             )}
